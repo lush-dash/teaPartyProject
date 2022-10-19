@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/index';
+import teaRouter from './routes/teaRouter';
+import apiTeaRouter from './routes/apiTeaRouter';
 
 dotenv.config();
 
@@ -41,5 +43,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
+app.use('/tea', teaRouter);
+app.use('api/tea', apiTeaRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
