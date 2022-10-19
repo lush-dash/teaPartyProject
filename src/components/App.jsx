@@ -11,15 +11,17 @@ import TeaCard from './TeaCard';
 export default function App({ user, tea }) {
   const [currentUser, setCurrentUser] = useState(user || null);
   return (
-    <div className="container">
+    <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tea/:id" element={(<TeaCard tea={tea} />)} />
-        <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
-        <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
-        <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
-      </Routes>
+      <div className="container mt-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tea/:id" element={(<TeaCard tea={tea} />)} />
+          <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
+          <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
+          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
+        </Routes>
+      </div>
     </div>
   );
 }

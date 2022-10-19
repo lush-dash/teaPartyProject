@@ -15,9 +15,19 @@ export default function Navbar({ user, setUser }) {
   return (
     <nav className="navbar navbar-expand-lg bg-success">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Tea Party</Link>
+
+        <Link className="navbar-brand" to="/">
+          <img src="https://cdn-icons-png.flaticon.com/512/2418/2418214.png" alt="tea-cup" width="30" height="30" className="d-inline-block align-text-center m-1 me-3 mb-2" />
+          Tea Party
+        </Link>
+
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon" />
+        </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
             {!user && (
             <>
               <li className="nav-item">
@@ -28,16 +38,18 @@ export default function Navbar({ user, setUser }) {
               </li>
             </>
             )}
+
             {user && (
             <>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/userpage">Личный кабинет</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/logout">Выход</a>
+                <a onClick={logoutHandler} className="nav-link" href="/logout">Выход</a>
               </li>
             </>
             )}
+
           </ul>
         </div>
       </div>
