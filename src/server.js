@@ -5,10 +5,10 @@ import store from 'session-file-store';
 import dotenv from 'dotenv';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
-import indexRouter from './routes/indexRouter';
-import apiRouter from './routes/apiRouter';
-import teaRouter from './routes/teaRouter';
-import apiTeaRouter from './routes/apiTeaRouter';
+import indexRouter from './routes/render/indexRouter';
+import apiRouter from './routes/api/apiRouter';
+import teaRouter from './routes/render/teaRouter';
+import apiTeaRouter from './routes/api/apiTeaRouter';
 
 dotenv.config();
 
@@ -47,6 +47,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/api/v1', apiRouter);
 app.use('/tea', teaRouter);
-app.use('api/tea', apiTeaRouter);
+app.use('/api/tea', apiTeaRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
