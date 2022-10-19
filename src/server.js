@@ -5,11 +5,12 @@ import store from 'session-file-store';
 import dotenv from 'dotenv';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
-import indexRouter from './routes/index';
+import indexRouter from './routes/indexRouter';
+import apiRouter from './routes/apiRouter';
 
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT || 3002;
+const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 const FileStore = store(session);
 
@@ -37,9 +38,11 @@ app.use(session(sessionConfig));
 
 app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
+  res.locals.user = req.session.user;
   next();
 });
 
 app.use('/', indexRouter);
+app.use('/api/v1', apiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
