@@ -23,7 +23,6 @@ export default function Layout({ initState }) {
       </head>
       <body>
         <div id="root">
-          {console.log(initState)}
           <StaticRouter location={initState.path}>
             <App {...initState} />
           </StaticRouter>

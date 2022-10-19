@@ -5,6 +5,7 @@ import store from 'session-file-store';
 import dotenv from 'dotenv';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
+import indexRouter from './routes/index';
 
 dotenv.config();
 
@@ -38,5 +39,7 @@ app.use((req, res, next) => {
   res.locals.path = req.originalUrl;
   next();
 });
+
+app.use('/', indexRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
