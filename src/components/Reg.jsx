@@ -22,17 +22,21 @@ function Reg({ setUser }) {
 
   return (
     <div>
-      <h1>Reg</h1>
+      <h1>Регистрация</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-          <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Электронная почта
+            <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </label>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-          <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Пароль
+            <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
+          </label>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-success">Зарегистрироваться</button>
       </form>
     </div>
   );

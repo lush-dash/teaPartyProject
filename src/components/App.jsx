@@ -12,7 +12,7 @@ export default function App({ user, tea, filteredComments }) {
   const [currentUser, setCurrentUser] = useState(user || null);
 
   return (
-    <div className="container">
+    <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
       <Routes>
         <Route path="/" element={<Home />} />

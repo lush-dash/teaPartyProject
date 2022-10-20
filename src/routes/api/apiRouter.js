@@ -1,8 +1,10 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-// import { User } from '../../db/models';
+import { User } from '../db/models';
 
 const router = express.Router();
+
+// сделать нормальную проверку на валидный пароль
 
 router.post('/reg', async (req, res) => {
   const { email, password } = req.body;
