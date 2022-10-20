@@ -1,8 +1,6 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
 
-// import { User } from '../../db/models';
-
 const router = express.Router();
 
 router.post('/reg', async (req, res) => {
@@ -45,8 +43,5 @@ router.get('/auth/logout', async (req, res) => {
 });
 
 
-router.get('/', async(req, res) => {
-
-})
 
 export default router;

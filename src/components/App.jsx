@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
-import Home from './Home';
 import Reg from './Reg';
 import Auth from './Auth';
 import UserPage from './UserPage';
 import PrivateRoute from './PrivateRoute';
 import TeaCard from './TeaCard';
-import Map from './Map'
+import Map from './Map';
 
 export default function App({ user, tea, filteredComments }) {
   const [currentUser, setCurrentUser] = useState(user || null);

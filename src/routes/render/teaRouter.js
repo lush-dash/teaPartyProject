@@ -1,5 +1,7 @@
 import { Router } from 'express';
-import { Tea, Comm, User } from '../../db/models';
+import {
+  Tea, Comm, User, Country,
+} from '../../db/models';
 
 const router = Router();
 
@@ -13,8 +15,10 @@ router.get('/:id', async (req, res) => {
     }],
     order: [['id', 'DESC']],
   });
-  const initState = { tea, filteredComments };
+  const initState = { tea, filteredComments, allCountries };
   res.render('Layout', initState);
 });
+
+
 
 export default router;
