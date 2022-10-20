@@ -13,7 +13,7 @@ export default function UserPage({ user, teas }) {
   return (
     <>
       <br />
-      {user ? ( // user.isAdmin
+      {user ? ( // user.isAdmin - ЗАМЕНИТЬ!
         <>
           <FormNewTea updateAllTeas={updateAllTeas} />
           <Teas allTeas={allTeas} />
