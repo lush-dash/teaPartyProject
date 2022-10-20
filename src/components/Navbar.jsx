@@ -9,7 +9,6 @@ export default function Navbar({ user, setUser }) {
     const response = await fetch('/api/logout');
     if (response.ok) {
       setUser(null);
-      console.log('ok');
       navigate('/');
     }
   };
