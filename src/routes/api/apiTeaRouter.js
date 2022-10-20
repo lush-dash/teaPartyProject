@@ -5,7 +5,16 @@ const router = Router();
 
 router.get('/:id', async (req, res) => {
   const tea = await Tea.findOne({ where: { id: req.params.id } });
-  res.json(tea);
+  const filteredComments = await Comm.findAll({
+    where: { tea_id: req.params.id },
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }],
+    order: [['id', 'DESC']],
+  });
+  const data = { tea, filteredComments };
+  res.json(data);
 });
 
 router.delete('/:id', async (req, res) => {
@@ -56,5 +65,16 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   const allTeas = await Tea.findAll({ order: [['id', 'DESC']] });
-  res.json(allTeas);
+  const allComments = await Comm.findAll({
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title'],
+    }],
+    order: [['id', 'DESC']],
+  });
+  const data = { allComments, allTeas };
+  res.json(data);
 });

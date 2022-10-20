@@ -17,7 +17,8 @@ export default function TeaCard({ tea, filteredComments, user }) {
       fetch(`/api/tea/${id}`)
         .then((res) => res.json())
         .then((data) => {
-          setCurrTea(data);
+          setCurrTea(data.tea);
+          setCurrentComments(data.filteredComments);
         });
     }
   }, []);
