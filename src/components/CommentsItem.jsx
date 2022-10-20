@@ -8,6 +8,7 @@ export default function CommentsItem({ comment }) {
         {comment.text}
       </div>
       <span className="badge bg-primary rounded-pill bg-success">{JSON.stringify(comment.createdAt).slice(1, 11)}</span>
+      <span className="badge bg-primary rounded-pill bg-success">{comment.Tea.title}</span>
     </li>
   );
 }

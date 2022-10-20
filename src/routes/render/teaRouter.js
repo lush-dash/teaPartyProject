@@ -17,4 +17,18 @@ router.get('/:id', async (req, res) => {
   res.render('Layout', initState);
 });
 
+router.get('/', async (req, res) => {
+  const tea = await Tea.findOne({ where: { id: req.params.id } });
+  const filteredComments = await Comm.findAll({
+    where: { tea_id: req.params.id },
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }],
+    order: [['id', 'DESC']],
+  });
+  const initState = { tea, filteredComments };
+  res.render('Layout', initState);
+});
+
 export default router;
