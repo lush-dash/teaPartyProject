@@ -10,6 +10,7 @@ import TeaCard from './TeaCard';
 
 export default function App({ user, tea, filteredComments }) {
   const [currentUser, setCurrentUser] = useState(user || null);
+
   return (
     <div className="container">
       <Navbar user={currentUser} setUser={setCurrentUser} />

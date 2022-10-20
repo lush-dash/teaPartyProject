@@ -11,6 +11,7 @@ router.get('/:id', async (req, res) => {
       model: User,
       attributes: ['name'],
     }],
+    order: [['id', 'DESC']],
   });
   const initState = { tea, filteredComments };
   res.render('Layout', initState);
