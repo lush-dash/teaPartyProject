@@ -42,7 +42,7 @@ router.post('/auth', async (req, res) => {
   }
 });
 
-router.get('/auth/logout', async (req, res) => {
+router.get('/logout', async (req, res) => {
   res.clearCookie('user_sid');
   req.session.destroy();
   res.sendStatus(200);
