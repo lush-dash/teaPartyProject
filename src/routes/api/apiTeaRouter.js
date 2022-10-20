@@ -8,7 +8,7 @@ router.get('/:id', async (req, res) => {
   res.json(tea);
 });
 
-router.post('/:id/comment', async (req, res) => { // принимать user.id и ставить сместо 1
+router.post('/:id/comment', async (req, res) => {
   const comment = await Comm.create({
     user_id: Number(req.body.userId),
     tea_id: req.params.id,
@@ -37,3 +37,19 @@ router.get('/:id/comments', async (req, res) => {
 });
 
 export default router;
+
+router.post('/', async (req, res) => {
+  const tea = await Tea.create({
+    title: req.body.title,
+    place: req.body.place,
+    img: req.body.img,
+    description: req.body.description,
+  });
+  console.log(tea);
+  res.json(tea);
+});
+
+router.get('/', async (req, res) => {
+  const allTeas = await Tea.findAll({ order: [['id', 'DESC']] });
+  res.json(allTeas);
+});

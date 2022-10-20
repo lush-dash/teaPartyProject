@@ -7,10 +7,12 @@ import Auth from './Auth';
 import UserPage from './UserPage';
 import PrivateRoute from './PrivateRoute';
 import TeaCard from './TeaCard';
+import Map from './Map';
 
-export default function App({ user, tea, filteredComments }) {
+export default function App({
+  user, tea, filteredComments, teas,
+}) {
   const [currentUser, setCurrentUser] = useState(user || null);
-  console.log(currentUser);
   return (
     <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
