@@ -16,7 +16,7 @@ export default function FormAddComment({ user, updateCurrComments }) {
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ newCommentText }), // + тащить user.id, когда будет user
+      body: JSON.stringify({ newCommentText, userId: user.id }), // + тащить user.id, когда будет user
     });
     const data = await response.json();
     if (data.id) {
