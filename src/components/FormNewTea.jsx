@@ -46,7 +46,7 @@ export default function FormNewTea({ updateAllTeas }) {
             <textarea name="description" type="text" className="form-control" id="exampleInputPassword1" />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">Добавить</button>
+        <button id="btn" type="submit" className="btn ">Добавить</button>
       </form>
     </>
   );
