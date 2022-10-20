@@ -21,7 +21,7 @@ export default function Layout({ initState }) {
           src="https://api-maps.yandex.ru/2.1/?apikey=67fb6968-a82a-49be-8aff-f50bf8e45f4a&lang=ru_RU"
           type="text/javascript"
         />
-        <script defer src="/mymap.js" />
+        {/* <script defer src="/mymap.js" /> */}
         <script defer src="/app.js" />
         <script defer src="/vendor.js" />
         <title>teaParty</title>
