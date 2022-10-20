@@ -7,6 +7,7 @@ export default function TeaCard({ tea, filteredComments, user }) {
   const { id } = useParams();
   const [currTea, setCurrTea] = useState(tea);
   const [currentComments, setCurrentComments] = useState(filteredComments || null);
+
   function updateCurrComments(newComment) {
     setCurrentComments((prev) => [newComment, ...prev]);
   }
