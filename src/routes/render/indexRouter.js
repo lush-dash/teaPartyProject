@@ -14,8 +14,4 @@ router.get('/auth', (req, res) => {
   res.render('Layout');
 });
 
-router.get('/userpage', (req, res) => {
-  res.render('Layout');
-});
-
 export default router;

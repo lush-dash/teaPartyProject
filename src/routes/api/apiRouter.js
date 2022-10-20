@@ -5,7 +5,9 @@ import { User, Country } from '../../db/models';
 const router = express.Router();
 
 router.post('/reg', async (req, res) => {
-  const { email, password, name } = req.body;
+  const {
+    email, password, name, isAdmin,
+  } = req.body;
 
   if (!name || !email || !password) return res.status(400).json({ message: 'Имя, почта или пароль не заданы' });
   const hashPassword = await hash(password, 10);
@@ -15,9 +17,9 @@ router.post('/reg', async (req, res) => {
 
   try {
     const newUser = await User.create({
-      email, password: hashPassword, name, isAdmin: false,
+      email, password: hashPassword, name, isAdmin: (!!isAdmin),
     });
-    req.session.user = { id: newUser.id, email: newUser.email };
+    req.session.user = { id: newUser.id, email: newUser.email, isAdmin: newUser.isAdmin };
     res.json({ id: newUser.id, email: newUser.email, isAdmin: newUser.isAdmin });
   } catch (err) {
     console.error(err);
@@ -35,7 +37,8 @@ router.post('/auth', async (req, res) => {
 
     if (!isValid) return res.status(400).json({ message: 'Почта или пароль не верны' });
 
-    req.session.user = { id: userFromDb.id, email: userFromDb.email };
+    req.session.user = { id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin};
+    console.log(req.session.user);
     res.json({ id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin });
   } catch (err) {
     console.error(err);

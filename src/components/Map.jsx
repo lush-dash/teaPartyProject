@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Map({}) {
+export default function Map() {
   const [allCountries, setAllCountry] = useState([]);
   const [country, setCountry] = useState({ shir: 55.751574, dolg: 37.573856 });
   const [myMap, setMyMap] = useState(null);
@@ -51,8 +51,6 @@ export default function Map({}) {
     });
   }, [country, myMap]);
   return (
-    <>
-      {country?.shir && <div id="map" style={{ width: 1150, height: 500 }} />}
-    </>
+    <div id="map" style={{ width: 1150, height: 500 }} />
   );
 }
