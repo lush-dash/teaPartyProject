@@ -5,9 +5,13 @@ import Teas from './Teas';
 
 export default function UserPage({ user, teas, allComments }) {
   const [allTeas, setAllTeas] = useState(teas);
-  console.log(user);
   function updateAllTeas(newTea) {
     setAllTeas((prev) => [newTea, ...prev]);
+  }
+
+  function updateDeletedTeas(deletedTeaId) {
+    console.log(deletedTeaId);
+    setAllTeas(allTeas.filter((el) => el.id !== deletedTeaId));
   }
 
   return (
@@ -16,7 +20,7 @@ export default function UserPage({ user, teas, allComments }) {
       {user?.isAdmin ? (
         <>
           <FormNewTea updateAllTeas={updateAllTeas} />
-          <Teas allTeas={allTeas} />
+          <Teas updateDeletedTeas={updateDeletedTeas} allTeas={allTeas} />
         </>
       ) : (
         <>

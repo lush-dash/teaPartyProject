@@ -8,6 +8,12 @@ router.get('/:id', async (req, res) => {
   res.json(tea);
 });
 
+router.delete('/:id', async (req, res) => {
+  console.log(req.params.id);
+  await Tea.destroy({ where: { id: req.params.id } });
+  res.sendStatus(200);
+});
+
 router.post('/:id/comment', async (req, res) => {
   const comment = await Comm.create({
     user_id: Number(req.body.userId),
@@ -45,7 +51,6 @@ router.post('/', async (req, res) => {
     img: req.body.img,
     description: req.body.description,
   });
-  console.log(tea);
   res.json(tea);
 });
 
