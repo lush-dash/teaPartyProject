@@ -5,10 +5,10 @@ import store from 'session-file-store';
 import dotenv from 'dotenv';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
-import indexRouter from './routes/indexRouter';
-import apiRouter from './routes/apiRouter';
-import teaRouter from './routes/teaRouter';
-import apiTeaRouter from './routes/apiTeaRouter';
+import indexRouter from './routes/render/indexRouter';
+import apiRouter from './routes/api/apiRouter';
+import teaRouter from './routes/render/teaRouter';
+import apiTeaRouter from './routes/api/apiTeaRouter';
 
 dotenv.config();
 
@@ -17,14 +17,14 @@ const app = express();
 const FileStore = store(session);
 
 const sessionConfig = {
-  name: 'user_sid', 				// Имя куки для хранения id сессии. По умолчанию - connect.sid
-  secret: process.env.SESSION_SECRET ?? 'test',	// Секретное слово для шифрования, может быть любым
-  resave: true, 				// Пересохранять ли куку при каждом запросе
+  name: 'user_sid', // Имя куки для хранения id сессии. По умолчанию - connect.sid
+  secret: process.env.SESSION_SECRET ?? 'test', // Секретное слово для шифрования, может быть любым
+  resave: true, // Пересохранять ли куку при каждом запросе
   store: new FileStore(),
-  saveUninitialized: false, 		// Создавать ли сессию без инициализации ключей в req.session
+  saveUninitialized: false, // Создавать ли сессию без инициализации ключей в req.session
   cookie: {
     maxAge: 1000 * 60 * 60 * 12, // Срок истечения годности куки в миллисекундах
-    httpOnly: true, 				// Серверная установка и удаление куки, по умолчанию true
+    httpOnly: true, // Серверная установка и удаление куки, по умолчанию true
   },
 };
 
@@ -45,8 +45,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/api/v1', apiRouter);
+app.use('/api', apiRouter);
 app.use('/tea', teaRouter);
-app.use('api/tea', apiTeaRouter);
+app.use('/api/tea', apiTeaRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

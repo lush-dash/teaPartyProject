@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import CommentsItem from './CommentsItem';
 
-export default function CommentsByTea(allComments) {
-  const { id } = useParams();
-  const [currentComments, setCurrentComments] = useState(allComments);
-
-  useEffect(() => {
-    setCurrentComments(currentComments.filter((el) => el.tea_id === id));
-  }, []);
-
+export default function CommentsByTea({ currentComments }) {
   return (
     <ul className="list-group">
-      {currentComments?.length ? currentComments.map((el) => <CommentsItem comment={el} />) : 'There are no comments'}
+      {currentComments?.length ? currentComments.map((el) => <CommentsItem key={el.id} comment={el} />) : 'Здесь пока нет комментариев'}
     </ul>
   );
 }
