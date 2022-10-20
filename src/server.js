@@ -9,6 +9,8 @@ import indexRouter from './routes/render/indexRouter';
 import apiRouter from './routes/api/apiRouter';
 import teaRouter from './routes/render/teaRouter';
 import apiTeaRouter from './routes/api/apiTeaRouter';
+import apiUserRouter from './routes/api/apiUserRouter';
+import userRouter from './routes/render/userRouter';
 
 dotenv.config();
 
@@ -48,5 +50,7 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 app.use('/tea', teaRouter);
 app.use('/api/tea', apiTeaRouter);
+app.use('/api/userpage', apiUserRouter);
+app.use('/userpage', userRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

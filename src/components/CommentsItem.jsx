@@ -7,7 +7,7 @@ export default function CommentsItem({ comment }) {
         <div className="fw-bold">{comment.User.name}</div>
         {comment.text}
       </div>
-      <span className="badge bg-primary rounded-pill">{JSON.stringify(comment.createdAt).slice(1, 11)}</span>
+      <span className="badge bg-primary rounded-pill bg-success">{JSON.stringify(comment.createdAt).slice(1, 11)}</span>
     </li>
   );
 }
