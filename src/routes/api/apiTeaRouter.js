@@ -5,7 +5,22 @@ const router = Router();
 
 router.get('/:id', async (req, res) => {
   const tea = await Tea.findOne({ where: { id: req.params.id } });
-  res.json(tea);
+  const filteredComments = await Comm.findAll({
+    where: { tea_id: req.params.id },
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }],
+    order: [['id', 'DESC']],
+  });
+  const data = { tea, filteredComments };
+  res.json(data);
+});
+
+router.delete('/:id', async (req, res) => {
+  console.log(req.params.id);
+  await Tea.destroy({ where: { id: req.params.id } });
+  res.sendStatus(200);
 });
 
 router.post('/:id/comment', async (req, res) => {
@@ -45,11 +60,21 @@ router.post('/', async (req, res) => {
     img: req.body.img,
     description: req.body.description,
   });
-  console.log(tea);
   res.json(tea);
 });
 
 router.get('/', async (req, res) => {
   const allTeas = await Tea.findAll({ order: [['id', 'DESC']] });
-  res.json(allTeas);
+  const allComments = await Comm.findAll({
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title'],
+    }],
+    order: [['id', 'DESC']],
+  });
+  const data = { allComments, allTeas };
+  res.json(data);
 });

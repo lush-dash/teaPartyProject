@@ -9,7 +9,7 @@ import TeaCard from './TeaCard';
 import Map from './Map';
 
 export default function App({
-  user, tea, filteredComments, teas,
+  user, tea, filteredComments, teas, allComments,
 }) {
   const [currentUser, setCurrentUser] = useState(user || null);
   return (
@@ -21,7 +21,7 @@ export default function App({
           <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
           <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
           <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
-          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
+          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage allComments={allComments} teas={teas} user={currentUser} /></PrivateRoute>} />
         </Routes>
       </div>
     </div>
