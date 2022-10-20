@@ -9,6 +9,7 @@ export default function Navbar({ user, setUser }) {
     const response = await fetch('/api/logout');
     if (response.ok) {
       setUser(null);
+      console.log('ok');
       navigate('/');
     }
   };
@@ -45,7 +46,7 @@ export default function Navbar({ user, setUser }) {
                 <NavLink className="nav-link" to="/userpage">Личный кабинет</NavLink>
               </li>
               <li className="nav-item">
-                <a onClick={logoutHandler} className="nav-link" href="/api/logout">Выход</a>
+                <Link onClick={logoutHandler} className="nav-link" to="/logout">Выход</Link>
               </li>
             </>
             )}
