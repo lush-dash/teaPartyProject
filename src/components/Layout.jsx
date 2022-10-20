@@ -25,7 +25,7 @@ export default function Layout({ initState }) {
         />
         <script defer src="/app.js" />
         <script defer src="/vendor.js" />
-        <title>TeaParty</title>
+        <title>Tea Party</title>
       </head>
       <body>
         <div id="root">

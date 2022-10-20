@@ -35,7 +35,7 @@ export default function FormAddComment({ user, updateCurrComments }) {
             <textarea name="commentText" onChange={setNewComment} value={newCommentText || ''} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style={{ width: '40rem' }} />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary btn-success">Отправить</button>
+        <button id="btn" type="submit" className="btn">Отправить</button>
       </form>
     </>
 

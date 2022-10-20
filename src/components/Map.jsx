@@ -52,20 +52,11 @@ export default function Map() {
   }, [country, myMap]);
   return (
     <div
-      className="container"
+      className="img-fluid"
+      id="map"
       style={{
-        borderRadius: '30px', padding: '2%', backgroundColor: '#cbdfbd',
+        width: 1200, height: 500, padding: '3%', backgroundColor: '#cbdfbd', borderRadius: '30px',
       }}
-    >
-      {country?.shir && (
-      <div
-        id="map"
-        style={{
-          minWidth: '100%', minHeight: '100%', width: 'auto', height: 'auto', display: 'block', position: 'relative',
-        }}
-      />
-      )}
-    </div>
-
+    />
   );
 }
