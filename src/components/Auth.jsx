@@ -40,7 +40,7 @@ function Auth({ setUser }) {
             <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
           </label>
         </div>
-        <button type="submit" className="btn btn-success">Войти</button>
+        <button type="submit" className="btn" style={{ background: '#809e7f' }}>Войти</button>
       </form>
     </div>
   );

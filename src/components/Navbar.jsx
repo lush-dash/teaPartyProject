@@ -6,16 +6,14 @@ export default function Navbar({ user, setUser }) {
 
   const logoutHandler = async (e) => {
     e.preventDefault();
-    console.log('ok');
     const response = await fetch('/api/logout');
     if (response.ok) {
       setUser(null);
-      console.log('ok');
       navigate('/');
     }
   };
   return (
-    <nav className="navbar navbar-expand-lg bg-success">
+    <nav className="navbar navbar-expand-lg" style={{ background: '#7FB77E' }}>
       <div className="container-fluid">
 
         <Link className="navbar-brand" to="/">
