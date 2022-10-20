@@ -1,6 +1,6 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-import { User } from '../../db/models';
+import { User, Country } from '../../db/models';
 
 const router = express.Router();
 
@@ -46,6 +46,11 @@ router.get('/logout', async (req, res) => {
   res.clearCookie('user_sid');
   req.session.destroy();
   res.sendStatus(200);
+});
+
+router.get('/', async (req, res) => {
+  const coords = await Country.findOne({ where: { name: 'Minsk' } });
+  res.json(coords);
 });
 
 export default router;
