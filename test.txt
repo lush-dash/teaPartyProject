@@ -17,5 +17,12 @@ sequelize-cli db:seed:all
 
  
    
-await queryInterface.bulkDelete('Tags',
-null, {}); 
+await queryInterface.bulkDelete('Tags', null, {}); 
+============================================
+app.jsx
+
+<Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage/><PrivateRoute>} />
+
+
+//добавить в регистрацию юзернэйм
+//на кнопку выход онклик логаутхэндлер
