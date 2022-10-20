@@ -51,6 +51,21 @@ export default function Map() {
     });
   }, [country, myMap]);
   return (
-    <div id="map" style={{ width: 1150, height: 500 }} />
+    <div
+      className="container"
+      style={{
+        borderRadius: '30px', padding: '2%', backgroundColor: '#cbdfbd',
+      }}
+    >
+      {country?.shir && (
+      <div
+        id="map"
+        style={{
+          minWidth: '100%', minHeight: '100%', width: 'auto', height: 'auto', display: 'block', position: 'relative',
+        }}
+      />
+      )}
+    </div>
+
   );
 }

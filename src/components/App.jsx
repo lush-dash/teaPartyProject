@@ -23,7 +23,6 @@ export default function App({
           <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
           <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage allComments={allComments} teas={teas} user={currentUser} /></PrivateRoute>} />
         </Routes>
-
       </div>
     </div>
   );
