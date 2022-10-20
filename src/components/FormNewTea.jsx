@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FormNewTea() {
+export default function FormNewTea({ updateAllTeas }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     const response = await fetch('/api/tea/', {
@@ -12,7 +12,7 @@ export default function FormNewTea() {
     });
     const data = await response.json();
     if (data.id) {
-      console.log(data);
+      updateAllTeas(data);
     }
   };
 

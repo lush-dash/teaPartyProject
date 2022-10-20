@@ -17,10 +17,4 @@ router.get('/:id', async (req, res) => {
   res.render('Layout', initState);
 });
 
-router.get('/', async (req, res) => {
-  const teas = await Tea.findAll({ order: [['id', 'DESC']] });
-  const initState = { teas };
-  res.render('Layout', initState);
-});
-
 export default router;
