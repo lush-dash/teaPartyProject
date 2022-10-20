@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import FormAddComment from './FormAddComment';
 import CommentsByTea from './CommentsByTea';
 
-export default function TeaCard({ tea, filteredComments }) {
+export default function TeaCard({ tea, filteredComments, user }) {
   const { id } = useParams();
   const [currTea, setCurrTea] = useState(tea);
   const [currentComments, setCurrentComments] = useState(filteredComments || null);
-
+  console.log(user);
   function updateCurrComments(newComment) {
     setCurrentComments((prev) => [newComment, ...prev]);
   }
@@ -38,8 +38,12 @@ export default function TeaCard({ tea, filteredComments }) {
         </div>
       </div>
       <br />
-      <FormAddComment updateCurrComments={updateCurrComments} />
-      <br />
+      {user && (
+      <>
+        <FormAddComment updateCurrComments={updateCurrComments} user={user} />
+        <br />
+      </>
+      )}
       <CommentsByTea currentComments={currentComments} />
       <br />
     </>

@@ -10,7 +10,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/:id/comment', async (req, res) => { // принимать user.id и ставить сместо 1
   const comment = await Comm.create({
-    user_id: 1,
+    user_id: Number(req.body.userId),
     tea_id: req.params.id,
     text: req.body.newCommentText,
   });
