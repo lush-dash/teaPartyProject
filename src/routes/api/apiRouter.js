@@ -52,8 +52,13 @@ router.get('/logout', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const coords = await Country.findOne({ where: { name: 'Minsk' } });
+  const coords = await Country.findOne({ where: { name: 'Astana' } });
   res.json(coords);
+});
+
+router.get('/allCountry', async (req, res) => {
+  const allCountry = await Country.findAll();
+  res.json(allCountry);
 });
 
 export default router;

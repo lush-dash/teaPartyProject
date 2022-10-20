@@ -20,5 +20,6 @@ module.exports = {
   ],
   rules: {
     'no-undef': 0,
+    'max-len': 0,
   },
 };
