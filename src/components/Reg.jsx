@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Reg({ setUser }) {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,17 +14,26 @@ function Reg({ setUser }) {
       body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
     });
 
+    const data = await response.json();
     if (response.ok) {
-      const data = await response.json();
       setUser(data);
       navigate('/');
+    } else {
+      setError(data.message);
     }
   };
 
   return (
     <div>
       <h1>Регистрация</h1>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="exampleInputName" className="form-label">
+            Имя пользователя
+            <input name="name" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </label>
+        </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Электронная почта
