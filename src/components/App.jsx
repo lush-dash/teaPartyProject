@@ -16,13 +16,15 @@ export default function App({
   return (
     <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
-      <Routes>
-        <Route path="/" element={<Map />} />
-        <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
-        <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
-        <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
-        <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage user={currentUser} teas={teas} /></PrivateRoute>} />
-      </Routes>
+      <div className="container mt-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
+          <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
+          <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
+          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
+        </Routes>
+      </div>
     </div>
   );
 }

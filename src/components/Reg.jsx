@@ -52,7 +52,7 @@ function Reg({ setUser }) {
             <input name="isAdmin" type="checkbox" className="form-check-input" id="exampleCheck1" />
           </label>
         </div>
-        <button type="submit" className="btn btn-success">Зарегистрироваться</button>
+        <button type="submit" className="btn" style={{ background: '#809e7f' }}>Зарегистрироваться</button>
       </form>
     </div>
   );
