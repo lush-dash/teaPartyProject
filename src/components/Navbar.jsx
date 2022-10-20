@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {
+  Link, NavLink, redirect, useNavigate,
+} from 'react-router-dom';
 
 export default function Navbar({ user, setUser }) {
   const navigate = useNavigate();
@@ -12,6 +14,11 @@ export default function Navbar({ user, setUser }) {
       navigate('/');
     }
   };
+
+  // const handleMap = (e) => {
+  //   fetch('./')
+  // };
+
   return (
     <nav className="navbar navbar-expand-lg bg-success">
       <div className="container-fluid">
