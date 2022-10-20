@@ -8,20 +8,19 @@ import UserPage from './UserPage';
 import PrivateRoute from './PrivateRoute';
 import TeaCard from './TeaCard';
 
-export default function App({ user, tea }) {
+export default function App({ user, tea, filteredComments }) {
   const [currentUser, setCurrentUser] = useState(user || null);
+
   return (
     <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
-      <div className="container mt-5">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tea/:id" element={(<TeaCard tea={tea} />)} />
-          <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
-          <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
-          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} />)} />
+        <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
+        <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
+        <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage /></PrivateRoute>} />
+      </Routes>
     </div>
   );
 }
