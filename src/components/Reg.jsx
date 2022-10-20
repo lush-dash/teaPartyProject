@@ -46,6 +46,12 @@ function Reg({ setUser }) {
             <input name="password" type="password" className="form-control" id="exampleInputPassword1" />
           </label>
         </div>
+        <div className="mb-3 form-check">
+          <label className="form-check-label" htmlFor="exampleCheck1">
+            Администратор
+            <input name="isAdmin" type="checkbox" className="form-check-input" id="exampleCheck1" />
+          </label>
+        </div>
         <button type="submit" className="btn btn-success">Зарегистрироваться</button>
       </form>
     </div>
