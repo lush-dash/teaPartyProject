@@ -13,10 +13,11 @@ export default function Map() {
       .then((data) => {
         setCountry(data);
       });
+    // console.log('useEffect 1');
     ymaps.ready(() => {
       const map = new ymaps.Map('map', {
         center: [country.shir, country.dolg],
-        zoom: 4,
+        zoom: 2,
       }, {
         searchControlProvider: 'yandex#search',
       });
@@ -29,6 +30,7 @@ export default function Map() {
       .then((data) => {
         setAllCountry(data);
       });
+    // console.log('useEffect 2');
     ymaps.ready(() => {
       const MyIconContentLayout = ymaps.templateLayoutFactory.createClass( // Создаём макет содержимого.
         '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>',
@@ -61,7 +63,8 @@ export default function Map() {
         );
       });
     });
-  }, [myMap]);
+  }, [myMap, country]);
+
   return (
     <div
       className="img-fluid"
