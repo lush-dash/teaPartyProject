@@ -32,11 +32,13 @@ router.post('/:id/comment', async (req, res) => {
     text: req.body.newCommentText,
   });
   const newComment = await Comm.findByPk(comment.id, {
-    include: [
-      {
-        model: User,
-        attributes: ['name'],
-      }],
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
+    }],
   });
   res.json(newComment);
 });
