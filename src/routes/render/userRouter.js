@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       attributes: ['name'],
     }, {
       model: Tea,
-      attributes: ['title'],
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });

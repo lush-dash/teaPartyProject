@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {
-  Tea, Comm, User
+  Tea, Comm, User,
 } from '../../db/models';
 
 const router = Router();
@@ -18,7 +18,6 @@ router.get('/:id', async (req, res) => {
   const initState = { tea, filteredComments };
   res.render('Layout', initState);
 });
-
 
 router.get('/', async (req, res) => {
   const tea = await Tea.findOne({ where: { id: req.params.id } });

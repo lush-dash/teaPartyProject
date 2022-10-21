@@ -38,7 +38,6 @@ router.post('/auth', async (req, res) => {
     if (!isValid) return res.status(400).json({ message: 'Почта или пароль не верны' });
 
     req.session.user = { id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin};
-    console.log(req.session.user);
     res.json({ id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin });
   } catch (err) {
     console.error(err);
