@@ -30,7 +30,6 @@ export default function UserPage({ user, teas, allUpdatedComments }) {
 
           <FormNewTea updateAllTeas={updateAllTeas} />
           <Teas updateDeletedTeas={updateDeletedTeas} allTeas={allTeas} />
-
         </div>
       ) : (
         <>
