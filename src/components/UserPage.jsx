@@ -11,15 +11,16 @@ export default function UserPage({ user, teas, allComments }) {
   }
 
   function updateDeletedTeas(deletedTeaId) {
-    console.log(deletedTeaId);
     setAllTeas(allTeas.filter((el) => el.id !== deletedTeaId));
   }
 
   useEffect(() => {
-    fetch('/api/tea').then((res) => res.json()).then((data) => {
-      setAllTeas(data.allTeas);
-      setCurrentComments(data.allComments);
-    });
+    if (!teas) {
+      fetch('/api/tea').then((res) => res.json()).then((data) => {
+        setAllTeas(data.allTeas);
+        setCurrentComments(data.allComments);
+      });
+    }
   }, []);
 
   return (
