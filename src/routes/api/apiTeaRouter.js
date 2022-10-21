@@ -10,6 +10,9 @@ router.get('/:id', async (req, res) => {
     include: [{
       model: User,
       attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });
@@ -18,7 +21,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  console.log(req.params.id);
   await Tea.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
 });
@@ -30,11 +32,13 @@ router.post('/:id/comment', async (req, res) => {
     text: req.body.newCommentText,
   });
   const newComment = await Comm.findByPk(comment.id, {
-    include: [
-      {
-        model: User,
-        attributes: ['name'],
-      }],
+    include: [{
+      model: User,
+      attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
+    }],
   });
   res.json(newComment);
 });
@@ -45,6 +49,9 @@ router.get('/:id/comments', async (req, res) => {
     include: [{
       model: User,
       attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });

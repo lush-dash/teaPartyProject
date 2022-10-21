@@ -1,6 +1,6 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-import { User, Country } from '../../db/models';
+import { User, Country, Tea } from '../../db/models';
 
 const router = express.Router();
 
@@ -37,8 +37,7 @@ router.post('/auth', async (req, res) => {
 
     if (!isValid) return res.status(400).json({ message: 'Почта или пароль не верны' });
 
-    req.session.user = { id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin};
-    console.log(req.session.user);
+    req.session.user = { id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin };
     res.json({ id: userFromDb.id, email: userFromDb.email, isAdmin: userFromDb.isAdmin });
   } catch (err) {
     console.error(err);
@@ -57,8 +56,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/allCountry', async (req, res) => {
-  const allCountry = await Country.findAll();
+  const allCountry = await Tea.findAll();
   res.json(allCountry);
+  res.status(200);
 });
 
 export default router;

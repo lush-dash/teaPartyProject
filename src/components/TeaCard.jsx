@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import FormAddComment from './FormAddComment';
 import CommentsByTea from './CommentsByTea';
 
-export default function TeaCard({ tea, filteredComments, user }) {
+export default function TeaCard({
+  tea, filteredComments, user, updateComments,
+}) {
   const { id } = useParams();
-  const [currTea, setCurrTea] = useState(tea);
+  const [currTea, setCurrTea] = useState(tea || null);
   const [currentComments, setCurrentComments] = useState(filteredComments || null);
 
   function updateCurrComments(newComment) {
@@ -13,14 +15,12 @@ export default function TeaCard({ tea, filteredComments, user }) {
   }
 
   useEffect(() => {
-    if (!currTea) {
-      fetch(`/api/tea/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setCurrTea(data.tea);
-          setCurrentComments(data.filteredComments);
-        });
-    }
+    fetch(`/api/tea/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrTea(data.tea);
+        setCurrentComments(data.filteredComments);
+      });
   }, []);
 
   return (
@@ -35,14 +35,14 @@ export default function TeaCard({ tea, filteredComments, user }) {
           <span className="badge rounded-pill" style={{ backgroundColor: '#606c38' }}>{currTea.place}</span>
           <br />
           <br />
-          <h5 className="card-title">{currTea.title}</h5>
-          <p className="card-text">{currTea.description}</p>
+          <h5 className="card-title">{currTea?.title}</h5>
+          <p className="card-text">{currTea?.description}</p>
         </div>
       </div>
       <br />
       {user && (
       <>
-        <FormAddComment updateCurrComments={updateCurrComments} user={user} />
+        <FormAddComment updateComments={updateComments} updateCurrComments={updateCurrComments} user={user} />
         <br />
       </>
       )}

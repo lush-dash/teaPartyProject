@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import {
-  Tea, Comm, User
+  Tea, Comm, User,
 } from '../../db/models';
 
 const router = Router();
@@ -12,13 +12,15 @@ router.get('/:id', async (req, res) => {
     include: [{
       model: User,
       attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });
   const initState = { tea, filteredComments };
   res.render('Layout', initState);
 });
-
 
 router.get('/', async (req, res) => {
   const tea = await Tea.findOne({ where: { id: req.params.id } });
@@ -28,7 +30,7 @@ router.get('/', async (req, res) => {
       attributes: ['name'],
     }, {
       model: Tea,
-      attributes: ['title'],
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });

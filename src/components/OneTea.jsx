@@ -7,7 +7,6 @@ export default function OneTea({ currTea, updateDeletedTeas }) {
       method: 'DELETE',
     });
     if (response.ok) {
-      console.log(currTea);
       updateDeletedTeas(currTea.id);
     }
   };

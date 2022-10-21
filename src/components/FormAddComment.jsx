@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function FormAddComment({ user, updateCurrComments }) {
+export default function FormAddComment({ user, updateCurrComments, updateComments }) {
   const { id } = useParams();
   const [newCommentText, setNewCommentText] = useState('');
 
@@ -16,11 +16,12 @@ export default function FormAddComment({ user, updateCurrComments }) {
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ newCommentText, userId: user.id }), // + тащить user.id, когда будет user
+      body: JSON.stringify({ newCommentText, userId: user.id }),
     });
     const data = await response.json();
     if (data.id) {
       updateCurrComments(data);
+      updateComments(data);
       setNewCommentText('');
     }
   }
