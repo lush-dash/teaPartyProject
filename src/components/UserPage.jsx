@@ -24,13 +24,12 @@ export default function UserPage({ user, teas, allUpdatedComments }) {
   }, []);
 
   return (
-    <>
-      <br />
+    <div>
       {user?.isAdmin ? (
-        <>
+        <div className="flex-tea">
           <FormNewTea updateAllTeas={updateAllTeas} />
           <Teas updateDeletedTeas={updateDeletedTeas} allTeas={allTeas} />
-        </>
+        </div>
       ) : (
         <>
           <h1>Комментарии</h1>
@@ -38,7 +37,7 @@ export default function UserPage({ user, teas, allUpdatedComments }) {
           <CommentsByTea currentComments={currentComments} />
         </>
       )}
-    </>
+    </div>
 
   );
 }
