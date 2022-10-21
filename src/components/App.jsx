@@ -12,20 +12,27 @@ export default function App({
   user, tea, filteredComments, teas, allComments,
 }) {
   const [currentUser, setCurrentUser] = useState(user || null);
+  const [allUpdatedComments, setAllUpdatedComments] = useState(allComments);
+
+  const updateComments = (newComment) => {
+    console.log(newComment);
+    setAllUpdatedComments((prev) => [newComment, ...prev]);
+  };
+
   return (
     <div>
       <Navbar user={currentUser} setUser={setCurrentUser} />
       <div className="container mt-5">
         <Routes>
           <Route path="/" element={<Map />} />
-          <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
+          <Route path="/tea/:id" element={(<TeaCard updateComments={updateComments} tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
           <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
           <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
           <Route
             path="/userpage"
             element={(
               <PrivateRoute user={currentUser}>
-                <UserPage allComments={allComments} teas={teas} user={currentUser} />
+                <UserPage allUpdatedComments={allUpdatedComments} teas={teas} user={currentUser} />
                 <br />
                 <Map />
                 <br />

@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import FormAddComment from './FormAddComment';
 import CommentsByTea from './CommentsByTea';
 
-export default function TeaCard({ tea, filteredComments, user }) {
+export default function TeaCard({
+  tea, filteredComments, user, updateComments,
+}) {
   const { id } = useParams();
   const [currTea, setCurrTea] = useState(tea || null);
   const [currentComments, setCurrentComments] = useState(filteredComments || null);
@@ -39,7 +41,7 @@ export default function TeaCard({ tea, filteredComments, user }) {
       <br />
       {user && (
       <>
-        <FormAddComment updateCurrComments={updateCurrComments} user={user} />
+        <FormAddComment updateComments={updateComments} updateCurrComments={updateCurrComments} user={user} />
         <br />
       </>
       )}

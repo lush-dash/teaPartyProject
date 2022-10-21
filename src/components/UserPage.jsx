@@ -3,9 +3,9 @@ import CommentsByTea from './CommentsByTea';
 import FormNewTea from './FormNewTea';
 import Teas from './Teas';
 
-export default function UserPage({ user, teas, allComments }) {
+export default function UserPage({ user, teas, allUpdatedComments }) {
   const [allTeas, setAllTeas] = useState(teas);
-  const [currentComments, setCurrentComments] = useState(allComments);
+  const [currentComments, setCurrentComments] = useState(allUpdatedComments);
   function updateAllTeas(newTea) {
     setAllTeas((prev) => [newTea, ...prev]);
   }
