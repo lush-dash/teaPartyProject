@@ -18,7 +18,6 @@ module.exports = {
           },
           key: 'id',
         },
-
       },
       tea_id: {
         type: Sequelize.INTEGER,

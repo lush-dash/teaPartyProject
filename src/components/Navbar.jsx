@@ -20,7 +20,7 @@ export default function Navbar({ user, setUser }) {
   // };
 
   return (
-    <nav className="navbar navbar-expand-lg" style={{ background: '#7FB77E' }}>
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
 
         <Link className="navbar-brand" to="/">

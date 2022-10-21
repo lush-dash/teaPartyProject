@@ -26,12 +26,13 @@ export default function TeaCard({
   return (
     <>
       <div className="card" style={{ width: '40rem' }}>
-        {currTea?.img
-          ? <img src={currTea.img} className="card-img-top" alt="tea" />
-          : <img src="https://www.foodandwine.com/thmb/Im6SgfreyeZWZ9Y87enUuQzSJCY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/different-types-of-tea-FT-BLOG0621-7c7fd231e66d4fea8ca9a47cad52ba79.jpg" className="card-img-top" alt="tea" /> }
-
+        <div className="">
+          {currTea?.img
+            ? <img src={currTea.img} className="card-img-top img-fluid" alt="tea" />
+            : <img src="https://www.foodandwine.com/thmb/Im6SgfreyeZWZ9Y87enUuQzSJCY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/different-types-of-tea-FT-BLOG0621-7c7fd231e66d4fea8ca9a47cad52ba79.jpg" className="card-img-top img-fluid" alt="tea" /> }
+        </div>
         <div className="card-body">
-          <span className="badge bg-primary rounded-pill bg-success">{currTea?.place}</span>
+          <span className="badge rounded-pill" style={{ backgroundColor: '#606c38' }}>{currTea?.place}</span>
           <br />
           <br />
           <h5 className="card-title">{currTea?.title}</h5>
