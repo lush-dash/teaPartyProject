@@ -1,6 +1,6 @@
 import express from 'express';
 import { hash, compare } from 'bcrypt';
-import { User, Country } from '../../db/models';
+import { User, Country, Tea } from '../../db/models';
 
 const router = express.Router();
 
@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/allCountry', async (req, res) => {
-  const allCountry = await Country.findAll();
+  const allCountry = await Tea.findAll();
   res.json(allCountry);
 });
 
