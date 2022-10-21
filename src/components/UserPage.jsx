@@ -27,6 +27,7 @@ export default function UserPage({ user, teas, allUpdatedComments }) {
     <div>
       {user?.isAdmin ? (
         <div className="flex-tea">
+
           <FormNewTea updateAllTeas={updateAllTeas} />
           <Teas updateDeletedTeas={updateDeletedTeas} allTeas={allTeas} />
         </div>
@@ -38,6 +39,5 @@ export default function UserPage({ user, teas, allUpdatedComments }) {
         </>
       )}
     </div>
-
   );
 }

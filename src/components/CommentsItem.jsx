@@ -16,8 +16,8 @@ export default function CommentsItem({ comment }) {
         {comment?.text}
       </div>
       <div className="flex-comment">
-        <span className="badge rounded-pill mb-2 flex-comment-item" style={{ backgroundColor: '#606c38' }}>{JSON.stringify(comment?.createdAt).slice(1, 11)}</span>
-        <span className="badge rounded-pill flex-comment-item" style={{ backgroundColor: '#606c38' }}>{comment?.Tea?.title}</span>
+      <span className="badge rounded-pill  mb-2 flex-comment-item" style={{ backgroundColor: '#606c38' }}>{JSON.stringify(comment?.createdAt).slice(1, 11)}</span>
+      <a onClick={clickHandler} className="badge rounded-pill flex-comment-item" style={{ backgroundColor: '#606c38' }}>{comment?.Tea?.title}</a>
       </div>
     </li>
   );
