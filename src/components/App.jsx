@@ -12,10 +12,9 @@ export default function App({
   user, tea, filteredComments, teas, allComments,
 }) {
   const [currentUser, setCurrentUser] = useState(user || null);
-  const [allUpdatedComments, setAllUpdatedComments] = useState(allComments);
+  const [allUpdatedComments, setAllUpdatedComments] = useState(allComments || []);
 
   const updateComments = (newComment) => {
-    console.log(newComment);
     setAllUpdatedComments((prev) => [newComment, ...prev]);
   };
 
