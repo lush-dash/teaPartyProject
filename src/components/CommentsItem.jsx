@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 export default function CommentsItem({ comment }) {
+  console.log(comment);
   const navigate = useNavigate();
   const clickHandler = (e) => {
     e.preventDefault();
-    navigate(`/tea/${comment?.Tea?.id}`);
+    navigate(`/tea/${comment?.tea_id}`);
   };
   return (
     <li className="list-group-item d-flex justify-content-between align-items-start">

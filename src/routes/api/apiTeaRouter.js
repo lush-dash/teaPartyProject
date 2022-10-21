@@ -49,6 +49,9 @@ router.get('/:id/comments', async (req, res) => {
     include: [{
       model: User,
       attributes: ['name'],
+    }, {
+      model: Tea,
+      attributes: ['title', 'id'],
     }],
     order: [['id', 'DESC']],
   });
