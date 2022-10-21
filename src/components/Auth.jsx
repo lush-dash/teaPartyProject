@@ -26,7 +26,7 @@ function Auth({ setUser }) {
   return (
     <div>
       <h1>Вход</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: '#AC4425' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

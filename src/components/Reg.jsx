@@ -26,7 +26,7 @@ function Reg({ setUser }) {
   return (
     <div>
       <h1>Регистрация</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: '#E6BA95' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputName" className="form-label">

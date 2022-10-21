@@ -17,8 +17,7 @@ export default function FormNewTea({ updateAllTeas }) {
   };
 
   return (
-    <>
-      <br />
+    <div className="tea-form">
       <h1>Добавить чай</h1>
       <br />
       <form onSubmit={submitHandler}>
@@ -48,6 +47,6 @@ export default function FormNewTea({ updateAllTeas }) {
         </div>
         <button id="btn" type="submit" className="btn ">Добавить</button>
       </form>
-    </>
+    </div>
   );
 }

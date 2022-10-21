@@ -6,6 +6,7 @@
   "scripts": {
     "webpack": "webpack -wd eval-source-map",
     "dev": "nodemon --exec babel-node src/server.js",
+    "devs": "babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
