@@ -21,7 +21,17 @@ export default function App({
           <Route path="/tea/:id" element={(<TeaCard tea={tea} filteredComments={filteredComments} user={currentUser} />)} />
           <Route path="/reg" element={<Reg setUser={setCurrentUser} />} />
           <Route path="/auth" element={<Auth setUser={setCurrentUser} />} />
-          <Route path="/userpage" element={<PrivateRoute user={currentUser}><UserPage allComments={allComments} teas={teas} user={currentUser} /></PrivateRoute>} />
+          <Route
+            path="/userpage"
+            element={(
+              <PrivateRoute user={currentUser}>
+                <UserPage allComments={allComments} teas={teas} user={currentUser} />
+                <br />
+                <Map />
+                <br />
+              </PrivateRoute>
+)}
+          />
         </Routes>
       </div>
     </div>
