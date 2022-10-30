@@ -7,7 +7,9 @@
     "webpack": "webpack -wd eval-source-map",
     "dev": "nodemon --exec babel-node src/server.js",
     "devs": "babel-node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack && babel src  --copy-files --out-dir distr",
+    "start": "node distr/server.js"
   },
   "repository": {
     "type": "git",
@@ -32,11 +34,11 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "morgan": "^1.10.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.19.3",
     "axios": "^1.1.3",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
