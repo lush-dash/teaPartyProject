@@ -14,7 +14,7 @@ import userRouter from './routes/render/userRouter';
 
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const FileStore = store(session);
 
